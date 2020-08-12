@@ -1,0 +1,28 @@
+{
+    "name": "express-spinup",
+    "version": "1.0.0",
+    "description": "Quickly Spin Up an API with Node.js",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon server",
+        "db:makemigrations": "node ./node_modules/sequelize-auto-migrations/bin/makemigration.js --name dbinit"
+    },
+    "keywords": [],
+    "author": "Eric Benedetto",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "colors": "^1.4.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "morgan": "^1.10.0",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.1.0",
+        "sequelize": "^6.3.4"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4",
+        "sequelize-auto-migrations": "https://github.com/ericbenedetto16/sequelize-auto-migrations"
+    }
+}
