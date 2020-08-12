@@ -6,8 +6,17 @@ require('colors');
 // @access  Public
 exports.getPosts = async (req, res, next) => {
     try {
-        // TODO: Query Database Here
-        // ...
+        const post = await posts.findAll({
+            include: [
+                {
+                    model: users,
+                    as: 'author',
+                    attributes: ['email'],
+                },
+            ],
+        });
+
+        res.status(200).json({ success: true, posts: post });
     } catch (err) {
         console.log(`${err}`.red.bold);
         res.status(500).json({ success: false, msg: `Internal Server Error` });
@@ -69,8 +78,21 @@ exports.createPost = async (req, res, next) => {
 // @access  Public
 exports.editPost = async (req, res, next) => {
     try {
-        // TODO: Query Database Here
-        // ...
+        const { id } = req.params;
+        const data = req.body;
+        const post = await posts.update(
+            { ...data, updated: Date.now() },
+            { where: { id } }
+        );
+
+        if (post[0] === 0) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Post Not Found',
+            });
+        }
+
+        res.status(200).json({ success: true, msg: 'Post Updated' });
     } catch (err) {
         console.log(`${err}`.red.bold);
         res.status(500).json({ success: false, msg: `Internal Server Error` });

@@ -7,7 +7,8 @@ const {
     deletePost,
 } = require('../controllers/posts');
 
-// TODO: Add Callbacks for Requests
-// ...
+router.route('/').get(getPosts).post(createPost);
+
+router.route('/:id').get(getPost).patch(editPost).delete(deletePost);
 
 module.exports = router;
