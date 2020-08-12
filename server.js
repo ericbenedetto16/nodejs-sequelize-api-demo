@@ -13,11 +13,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Set Up Routes
-const posts = require('./routes/posts');
-const users = require('./routes/users');
-app.get('/ping', (req, res, next) => res.status(200).type('txt').send('ok'));
-app.use('/api/v1/posts', posts);
-app.use('/api/v1/users', users);
+// TODO: Import and Setup Routes
+// ...
 
 // Server Listen
 const PORT = process.env.PORT || 5000;

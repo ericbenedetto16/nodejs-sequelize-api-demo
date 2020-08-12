@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { createUser } = require('../controllers/users');
 
-router.route('/').post(createUser);
+// TODO: Add Callbacks for Routes
+// ...
 
 module.exports = router;
